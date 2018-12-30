@@ -5,6 +5,8 @@ import (
 	"os"
 	"syscall"
 
+	"github.com/TRA-search/pkg/search/util/templates"
+
 	"github.com/spf13/cobra"
 )
 
@@ -32,6 +34,12 @@ func SearchTRACommand(in io.Reader, out, err io.Writer) *cobra.Command {
 		Long:  "This is very sample cmd of tra search engine",
 		Run:   runHelp,
 	}
+	group := &templates.CommandGroups{
+		{
+			Message: "Basic Commands (Beginner)",
+		},
+	}
+	group.Add(cmds)
 	return cmds
 }
 func runHelp(cmd *cobra.Command, args []string) {
